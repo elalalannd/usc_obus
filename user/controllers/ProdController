@@ -1,0 +1,19 @@
+<?php require('MysqlConnect.php'); 
+
+
+function loadItems(){
+   $conn = myConnect();
+   $sql = "SELECT * FROM books WHERE quantity != 0";
+   $result = mysqli_query($conn, $sql);
+   $sql = "SELECT * FROM uniform WHERE quantity != 0";
+   $result = mysqli_query($conn, $sql);
+
+   while($row=mysqli_fetch_array($result)){
+      //do something as long as there's a remaining row.
+      $rows[] = $row;
+   }
+   return $rows;  
+}
+
+
+?>
